@@ -144,8 +144,10 @@ class Graph:
             if self.degree(vertex) == 0:
                 stdout_str += f"{vertex} is not connected to anything.\n"
                 continue
-            stdout_str += f"{vertex}is connected to\n"
+            stdout_str += f"{vertex} is connected to\n"
             stdout_str += "\t"
-            for connected_vertex in self._outgoing[vertex]:
-                stdout_str += f"{connected_vertex} with\n\t{self.get_edge(vertex, connected_vertex)}\n\n"
+            for idx, connected_vertex in enumerate(self._outgoing[vertex]):
+                stdout_str += f"{connected_vertex} with\n" if idx < 1 else f"\n\t{connected_vertex} with\n" 
+                stdout_str += f"\t{self.get_edge(vertex, connected_vertex)}\n"
+            stdout_str += "\n"
         return stdout_str
