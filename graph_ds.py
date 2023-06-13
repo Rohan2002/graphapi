@@ -134,8 +134,7 @@ class Graph:
     def insert_edge(self, edge: Edge):
         origin, destination = edge.endpoints()
         self._outgoing[origin][destination] = edge
-        if self.is_directed():
-            self._incoming[destination][origin] = edge
+        self._incoming[destination][origin] = edge
         return edge
     
     def __repr__(self) -> str:
